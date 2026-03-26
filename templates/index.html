@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Supervison Serveur</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='CSS/style.css') }}">
+    </head>
+
+    <body>
+        <header>
+            <h1>Supervision Salle Serveur</h1>
+        </header>
+        <div>
+            <div class="sidebar">
+                <a class="active" href="#home"><img src="static/ICONES/home.png" alt=""> Home</a>
+                <a href="#video"><img src="static/ICONES/video.png" alt=""> Video</a>
+                <a href="#resources">Ressources</a>
+                
+                <div class="dropdown">
+                    <a href="#capteur" class="dropdownbtn"><img src="static/ICONES/capteur.png" alt=""> Capteur</a>
+                    <div class="dropdown-content">
+                        <a href="#historique">Historique</a>
+                        <a href="#graphe">Graphe</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="main-content" style="margin-left: 210px; padding: 20px;">
+                <h2>Flux Vidéo en Direct</h2>
+                <img id="video-stream" src="{{ url_for('video_feed') }}">
+            </div>
+        </div>
+    <script src="static/JS/mesFonction.js"></script>
+    </body>
+
+</html>

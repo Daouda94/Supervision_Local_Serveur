@@ -1,0 +1,87 @@
+header{
+    background-color: #0d1b2a;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-family: 'proxima-nova', sans-serif;
+
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #0d1b2a;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  /* left: 1px; */
+    font-family: 'proxima-nova', sans-serif;
+
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  background-color: #364958;
+  color: black;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: grey;
+  color: white;
+}
+
+/*_______________________________*code du dropdown de la sidebar *_______________________________*/
+.dropdown {
+    position: relative;
+    display: block;
+}
+
+.dropdownbtn{
+    width: 100%;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #2c3e50;
+    padding-left: 100px;
+    border-bottom:none;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: grey;
+    display: block;
+}
+
+/*_______________________________ * icones side bar  *_______________________________*/
+
+.sidebar a img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/*_______________________________ * video-stream  *_______________________________*/
+#video-stream {
+    border: 2px solid #0d1b2a;
+    width: 80%;
+}
