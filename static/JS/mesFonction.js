@@ -1,4 +1,4 @@
-/*_______________________________ *changer section afficher*_______________________________*/
+/* =================== changer section afficher =================== */
 
 document.getElementById("nav_home").addEventListener("click", changerSection);
 document.getElementById("nav_video").addEventListener("click", changerSection);
@@ -43,6 +43,13 @@ function changerSection()
     document.getElementById("title_resources").style.display = "none";
     document.getElementById("title_capteur").style.display = "none";
     document.getElementById("title_administration").style.display = "none";
+
+    const videoImg = document.getElementById("video_stream");
+    if(videoImg) {
+        const currentSrc = videoImg.src;
+        videoImg.src = ""; // Reset
+        videoImg.src = currentSrc; // Relance
+    }
   }
   else if(this.id == "nav_resources")
   {
@@ -75,7 +82,7 @@ function changerSection()
 }
 
 
-/*_______________________________ *widget home video clickable et affichant l'onglet video*_______________________________*/
+/* =================== widget home video clickable et affichant l'onglet video =================== */
 
 document.getElementById("widget_home_video").addEventListener("click", afficherWindowsVideo);
 
@@ -96,7 +103,7 @@ function afficherWindowsVideo()
 }
 
 
-/*_______________________________ *changement de l'onglet actif sur la sidebar*_______________________________*/
+/* =================== changement de l'onglet actif sur la sidebar =================== */
 
 document.getElementById("nav_home").addEventListener("click", changerOngletActive);
 document.getElementById("nav_video").addEventListener("click", changerOngletActive);
@@ -136,7 +143,7 @@ function changerOngletActive()
 }
 
 
-/*_______________________________ *switch theme clair/sombre*_______________________________*/
+/* =================== switch theme clair/sombre =================== */
 document.getElementById("switch_theme_button").addEventListener("click", switchTheme);
 
 function switchTheme()
@@ -150,26 +157,26 @@ function switchTheme()
 }
 
 
-/*_______________________________ *control camera*_______________________________*/
-function controlCamera(direction) {
-    console.log("Commande envoyée : " + direction);
+/* =================== control camera =================== */
+// function controlCamera(direction) {
+//     console.log("Commande envoyée : " + direction);
     
-    fetch(`/control_camera?direction=${direction}`)
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === "success") {
-                console.log("Mouvement réussi : " + data.direction);
-            } else {
-                console.error("Erreur caméra : " + data.message);
-            }
-        })
-        .catch(error => {
-            console.error("Erreur lors de la requête : ", error);
-        });
-}
+//     fetch(`/control_camera?direction=${direction}`)
+//         .then(response => response.json())
+//         .then(data => {
+//             if (data.status === "success") {
+//                 console.log("Mouvement réussi : " + data.direction);
+//             } else {
+//                 console.error("Erreur caméra : " + data.message);
+//             }
+//         })
+//         .catch(error => {
+//             console.error("Erreur lors de la requête : ", error);
+//         });
+// }
 
 
-/*_______________________________ *Afficher/Masquer password login*_______________________________*/
+/* =================== Afficher/Masquer password login =================== */
 function Shown_password() {
   var x = document.getElementById("password_login");
   var y = document.getElementById("password_register");
@@ -195,7 +202,7 @@ function Shown_password() {
 
 }
 
-/*_______________________________ *register*_______________________________*/
+/* =================== register =================== */
 function showRegisterForm() {
   document.getElementById("register-form").style.display = "block";
   document.getElementById("login-form").style.display = "none";
@@ -207,27 +214,27 @@ function showLoginForm() {
 
 }
 
-/*_______________________________ *changement icone live*_______________________________*/
+/* =================== changement icone live =================== */
 document.addEventListener("DOMContentLoaded", function() {
     const videoWidget = document.querySelector(".widget_home_video");
     const videoImg = document.getElementById("widget_home_video");
 
-    // Si l'image ne charge pas (serveur Flask éteint)
+    // Si serveur Flask éteint
     videoImg.onerror = function() {
         videoWidget.classList.remove("is-live");
         videoWidget.classList.add("no-signal");
         videoContainer.classList.add("offline");
     };
 
-    // Si l'image charge bien
+    // Si serveur Flask allumé
     videoImg.onload = function() {
         videoWidget.classList.add("is-live");
         videoWidget.classList.remove("no-signal");
         videoContainer.classList.remove("offline");
     };
-});
+})
 
-/*_______________________________ *Page administration*_______________________________*/
+/* =================== Page administration =================== */
 document.getElementById("user_icon").addEventListener("click", afficher_page_administration);
 
 function afficher_page_administration() {
@@ -293,4 +300,3 @@ function deconnexionAdmin() {
     document.getElementById("admin_login_container").style.display = "flex";
     document.getElementById("admin_table_container").style.display = "none";
 }
-

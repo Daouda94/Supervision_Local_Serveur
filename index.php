@@ -1,9 +1,11 @@
 <?php
+
 session_start();
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -49,8 +51,7 @@ if (!isset($_SESSION['username'])) {
             <div class="main-content" section="home" id="windows_home">
                 <div class="widgets-container">
                     <div class="widget_home_video">
-                        <img id="widget_home_video" src="http://127.0.0.1:5000/video_feed">
-
+                        <img id="widget_home_video" src="http://172.18.201.105:7666/video_feed">
                     </div>
                 
                     <div class="widget_lecteur_RFID" id="widget_lecteur_RFID">
@@ -78,16 +79,32 @@ if (!isset($_SESSION['username'])) {
             </div>
 
             <div class="main-content" section="video" id="windows_video" style="display:none">
-                <img id="video_feed" src="http://127.0.0.1:5000/video_feed">
+                <img id="video_feed" src="http://172.18.201.105:7666/video_feed">
 
-                <div class="cam_controllers">
-                    <button onclick="controlCamera('up')">▲</button>
-                    <div class="horizontal-controls">
-                        <button onclick="controlCamera('left')">◀</button>
-                        <button class="button center">OK</button>
-                        <button onclick="controlCamera ('right')">▶</button>
+                <div class="controllers_container">
+                    <div class="cam-controlers">
+                        <button class="controllers up" onclick="controlCamera('up')">
+                            <span class="arrow">▲</span>
+                        </button>
+                        
+                        <div class="horizontal-btns">
+                            <button class="controllers left" onclick="controlCamera('left')">
+                                <span class="arrow">◀</span>
+                            </button>
+                            
+                            <div class="controllers-center">
+                                <span class="center-dot"></span>
+                            </div>
+                            
+                            <button class="controllers right" onclick="controlCamera('right')">
+                                <span class="arrow">▶</span>
+                            </button>
+                        </div>
+                        
+                        <button class="controllers down" onclick="controlCamera('down')">
+                            <span class="arrow">▼</span>
+                        </button>
                     </div>
-                    <button onclick="controlCamera('down')">▼</button>
                 </div>
 
             </div>
