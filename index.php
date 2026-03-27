@@ -20,6 +20,7 @@ if (!isset($_SESSION['username'])) {
                 <h1 class="section-title" id="title_video" style="display:none">Video</h1>
                 <h1 class="section-title" id="title_resources" style="display:none">Ressources</h1>
                 <h1 class="section-title" id="title_capteur" style="display:none">Capteur</h1>
+                <h1 class="section-title" id="title_history" style="display:none">Historique</h1>
                 <h1 class="section-title" id="title_administration" style="display:none">Administration</h1>
                 <img src="static/ICONES/account.png" id="user_icon">
         </header>
@@ -30,6 +31,7 @@ if (!isset($_SESSION['username'])) {
                 <a href="#home" id="nav_home" class="active"><img src="static/ICONES/home.png"> Home</a>
                 <a href="#video" id="nav_video"><img src="static/ICONES/video.png"> Video</a>
                 <a href="#resources" id="nav_resources"><img src="static/ICONES/ressource.png">Ressources</a>
+                <a href="#history" id="nav_history"><img src="static/ICONES/history.png">Historique</a>
 
                 <div class="dropdown">
                     <a href="#capteur" id="nav_capteur" class="dropdownbtn"><img src="static/ICONES/capteur.png"> Capteur</a>
@@ -157,10 +159,13 @@ if (!isset($_SESSION['username'])) {
                     </table>
                 </div>
             </div>
+
+            <div class="main-content" section="history" id="windows_history" style="display:none">
+            </div>
             
         </div>
-
     <script src="static/JS/mesFonction.js"></script>
+    <script src="static/JS/javastuff.js"></script>
     </body>
     
 </html>

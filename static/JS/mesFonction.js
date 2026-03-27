@@ -5,6 +5,7 @@ document.getElementById("nav_video").addEventListener("click", changerSection);
 document.getElementById("nav_resources").addEventListener("click", changerSection);
 document.getElementById("nav_capteur").addEventListener("click", changerSection);
 document.getElementById("nav_video").addEventListener("click", changerSection);
+document.getElementById("nav_history").addEventListener("click", changerSection);
 
 function changerSection()
 {  console.debug(this);
@@ -21,6 +22,7 @@ function changerSection()
     document.getElementById("windows_resources").style.display = "none";
     document.getElementById("windows_capteur").style.display = "none";
     document.getElementById("windows_administration").style.display = "none";
+    document.getElementById("windows_history").style.display = "none";
     
 
     document.getElementById("title_home").style.display = "block";
@@ -28,6 +30,7 @@ function changerSection()
     document.getElementById("title_resources").style.display = "none";
     document.getElementById("title_capteur").style.display = "none";
     document.getElementById("title_administration").style.display = "none";
+    document.getElementById("title_history").style.display = "none";
   }
   else if(this.id == "nav_video")
   {
@@ -36,6 +39,7 @@ function changerSection()
     document.getElementById("windows_resources").style.display = "none";
     document.getElementById("windows_capteur").style.display = "none";
     document.getElementById("windows_administration").style.display = "none";
+    document.getElementById("windows_history").style.display = "none";
 
 
     document.getElementById("title_home").style.display = "none";
@@ -43,6 +47,7 @@ function changerSection()
     document.getElementById("title_resources").style.display = "none";
     document.getElementById("title_capteur").style.display = "none";
     document.getElementById("title_administration").style.display = "none";
+    document.getElementById("title_history").style.display = "none";
 
     const videoImg = document.getElementById("video_stream");
     if(videoImg) {
@@ -58,12 +63,14 @@ function changerSection()
     document.getElementById("windows_resources").style.display = "block";
     document.getElementById("windows_capteur").style.display = "none";
     document.getElementById("windows_administration").style.display = "none";
+    document.getElementById("windows_history").style.display = "none";
 
     document.getElementById("title_home").style.display = "none";
     document.getElementById("title_video").style.display = "none";
     document.getElementById("title_resources").style.display = "block";
     document.getElementById("title_capteur").style.display = "none";
     document.getElementById("title_administration").style.display = "none";
+    document.getElementById("title_history").style.display = "none";
   }
   else if(this.id == "nav_capteur")
   {
@@ -72,12 +79,31 @@ function changerSection()
     document.getElementById("windows_resources").style.display = "none";
     document.getElementById("windows_capteur").style.display = "block";
     document.getElementById("windows_administration").style.display = "none";
+    document.getElementById("windows_history").style.display = "none";
 
     document.getElementById("title_home").style.display = "none";
     document.getElementById("title_video").style.display = "none";
     document.getElementById("title_resources").style.display = "none";
     document.getElementById("title_capteur").style.display = "block";
     document.getElementById("title_administration").style.display = "none";
+    document.getElementById("title_history").style.display = "none";
+  }
+    else if(this.id == "nav_history")
+  {
+    document.getElementById("windows_home").style.display = "none";
+    document.getElementById("windows_video").style.display = "none";
+    document.getElementById("windows_resources").style.display = "none";
+    document.getElementById("windows_capteur").style.display = "none";
+    document.getElementById("windows_administration").style.display = "none";
+    document.getElementById("windows_history").style.display = "block";
+
+    document.getElementById("title_home").style.display = "none";
+    document.getElementById("title_video").style.display = "none";
+    document.getElementById("title_resources").style.display = "none";
+    document.getElementById("title_capteur").style.display = "none";
+    document.getElementById("title_administration").style.display = "none";
+    document.getElementById("title_history").style.display = "block";
+
   }
 }
 
@@ -92,14 +118,39 @@ function afficherWindowsVideo()
   document.getElementById("windows_video").style.display = "block";
   document.getElementById("windows_resources").style.display = "none";
   document.getElementById("windows_capteur").style.display = "none";
+  document.getElementById("windows_history").style.display = "none";
+
 
   document.getElementById("title_home").style.display = "none";
   document.getElementById("title_video").style.display = "block";
   document.getElementById("title_resources").style.display = "none";
   document.getElementById("title_capteur").style.display = "none";
+  document.getElementById("title_history").style.display = "none";
 
   document.getElementById("nav_home").classList.remove("active");
   document.getElementById("nav_video").classList.add("active");
+}
+/* =================== widget home video clickable et affichant l'onglet video =================== */
+
+document.getElementById("widget_lecteur_RFID").addEventListener("click", afficherWindowsHistory);
+
+function afficherWindowsHistory()
+{
+  document.getElementById("windows_home").style.display = "none";
+  document.getElementById("windows_video").style.display = "none";
+  document.getElementById("windows_resources").style.display = "none";
+  document.getElementById("windows_capteur").style.display = "none";
+  document.getElementById("windows_history").style.display = "block";
+
+
+  document.getElementById("title_home").style.display = "none";
+  document.getElementById("title_video").style.display = "none";
+  document.getElementById("title_resources").style.display = "none";
+  document.getElementById("title_capteur").style.display = "none";
+  document.getElementById("title_history").style.display = "block";
+
+  document.getElementById("nav_home").classList.remove("active");
+  document.getElementById("nav_history").classList.add("active");
 }
 
 
@@ -109,6 +160,7 @@ document.getElementById("nav_home").addEventListener("click", changerOngletActiv
 document.getElementById("nav_video").addEventListener("click", changerOngletActive);
 document.getElementById("nav_resources").addEventListener("click", changerOngletActive);
 document.getElementById("nav_capteur").addEventListener("click", changerOngletActive);
+document.getElementById("nav_history").addEventListener("click", changerOngletActive);
 
 function changerOngletActive()
 {
@@ -118,6 +170,7 @@ function changerOngletActive()
     document.getElementById("nav_video").classList.remove("active");
     document.getElementById("nav_resources").classList.remove("active");
     document.getElementById("nav_capteur").classList.remove("active");
+    document.getElementById("nav_history").classList.remove("active");
   }
   else if(this.id == "nav_video")
   {
@@ -125,6 +178,7 @@ function changerOngletActive()
     document.getElementById("nav_video").classList.add("active");
     document.getElementById("nav_resources").classList.remove("active");
     document.getElementById("nav_capteur").classList.remove("active");
+    document.getElementById("nav_history").classList.remove("active");
   }
   else if(this.id == "nav_resources")
   {
@@ -132,6 +186,7 @@ function changerOngletActive()
     document.getElementById("nav_video").classList.remove("active");
     document.getElementById("nav_resources").classList.add("active");
     document.getElementById("nav_capteur").classList.remove("active");
+    document.getElementById("nav_history").classList.remove("active");
   }
   else if(this.id == "nav_capteur")
   {
@@ -139,6 +194,15 @@ function changerOngletActive()
     document.getElementById("nav_video").classList.remove("active");
     document.getElementById("nav_resources").classList.remove("active");
     document.getElementById("nav_capteur").classList.add("active");
+    document.getElementById("nav_history").classList.remove("active");
+  }
+  else if(this.id == "nav_history")
+  {
+    document.getElementById("nav_home").classList.remove("active");
+    document.getElementById("nav_video").classList.remove("active");
+    document.getElementById("nav_resources").classList.remove("active");
+    document.getElementById("nav_capteur").classList.remove("active");
+    document.getElementById("nav_history").classList.add("active");
   }
 }
 
@@ -174,7 +238,6 @@ function switchTheme()
 //             console.error("Erreur lors de la requête : ", error);
 //         });
 // }
-
 
 /* =================== Afficher/Masquer password login =================== */
 function Shown_password() {
@@ -240,28 +303,30 @@ document.getElementById("user_icon").addEventListener("click", afficher_page_adm
 function afficher_page_administration() {
   if(this.id == "user_icon")
   {
-    document.getElementById("windows_home").style.display = "none";;
-    document.getElementById("windows_home").style.display = "none";;
-    document.getElementById("windows_video").style.display = "none";;
-    document.getElementById("windows_resources").style.display = "none";;
+    document.getElementById("windows_home").style.display = "none";
+    document.getElementById("windows_home").style.display = "none";
+    document.getElementById("windows_video").style.display = "none";
+    document.getElementById("windows_resources").style.display = "none";
+    document.getElementById("windows_history").style.display = "none";
     document.getElementById("windows_administration").style.display = "block";
 
     document.getElementById("title_home").style.display = "none";
     document.getElementById("title_video").style.display = "none";
     document.getElementById("title_resources").style.display = "none";
     document.getElementById("title_capteur").style.display = "none";
+    document.getElementById("title_history").style.display = "none";
     document.getElementById("title_administration").style.display = "block";
 
     document.getElementById("nav_home").classList.remove("active");
     document.getElementById("nav_video").classList.remove("active");
     document.getElementById("nav_resources").classList.remove("active");
     document.getElementById("nav_capteur").classList.remove("active");
+    document.getElementById("nav_hstory").classList.remove("active");
   
     document.getElementById("administration-form").style.display = "block";
   
   }
 }
-
 
 function verifierLoginAdmin() {
     // 1. Récupération des valeurs saisies

@@ -1,8 +1,7 @@
 import cv2
 from flask import Flask, render_template, Response, jsonify, request, redirect, url_for, session
-# from onvif import ONVIFCamera
 # from onvif import OnvifClient
-from onvif import ONVIFCamera
+# from onvif import ONVIFCamera
 import numpy as np
 import os
 

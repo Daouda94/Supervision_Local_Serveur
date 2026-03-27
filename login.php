@@ -46,14 +46,13 @@ if (isset($_POST['login'])) {
 }
 
 # ==================== register ====================
-// require_once 'config.php';
 // $message = '';
 
-// if (isset($_POST['username']) && isset($_POST['password'])) {
+// if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 //     $username = $_POST['username'];
-//     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+//     $password = ($_POST['password'], PASSWORD_DEFAULT);
 
-//     $sql = "INSERT INTO loginz (username, password) VALUES (:username, :password)";
+//     $sql = "INSERT INTO Loginz (name, password) VALUES ('username', 'password')";
 //     $stmt = $pdo->prepare($sql);
 //     $result = $stmt->execute(['username' => $username, 'password' => $password]);
 
