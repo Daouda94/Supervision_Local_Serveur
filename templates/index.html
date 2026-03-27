@@ -9,27 +9,42 @@
         <header>
             <h1>Supervision Salle Serveur</h1>
         </header>
+
         <div>
             <div class="sidebar">
-                <a class="active" href="#home"><img src="static/ICONES/home.png" alt=""> Home</a>
-                <a href="#video"><img src="static/ICONES/video.png" alt=""> Video</a>
-                <a href="#resources">Ressources</a>
-                
+                <a href="#home" id="nav_home" class="active"><img src="static/ICONES/home.png"> Home</a>
+                <a href="#video" id="nav_video"><img src="static/ICONES/video.png"> Video</a>
+                <a href="#resources" id="nav_resources">Ressources</a>
+
                 <div class="dropdown">
-                    <a href="#capteur" class="dropdownbtn"><img src="static/ICONES/capteur.png" alt=""> Capteur</a>
+                    <a href="#capteur" id="nav_capteur" class="dropdownbtn"><img src="static/ICONES/capteur.png"> Capteur</a>
                     <div class="dropdown-content">
-                        <a href="#historique">Historique</a>
-                        <a href="#graphe">Graphe</a>
+                        <a href="#historique" id="nav_capteur_historique">Historique</a>
+                        <a href="#graphe" id="nav_capteur_graphe">Graphe</a>
                     </div>
                 </div>
             </div>
             
-            <div class="main-content" style="margin-left: 210px; padding: 20px;">
-                <h2>Flux Vidéo en Direct</h2>
-                <img id="video-stream" src="{{ url_for('video_feed') }}">
+            <div class="main-content" section="home" id="windows_home">
+                <h2>Home</h2>
+                <div class="widget_home_video"><img id="widget_home_video" src="{{ url_for('video_feed') }}"></div>
             </div>
+
+            <div class="main-content" section="video" id="windows_video">
+                <h2>Flux Vidéo en Direct</h2>
+                <img id="video_feed" src="{{ url_for('video_feed') }}">
+            </div>
+
+            <div class="main-content" section="ressources" id="windows_resources">
+                <h2>Ressources</h2>
+            </div>
+            
+            <div class="main-content" section="capteur" id="windows_capteur">
+                <h2>Capteurs</h2>
+            </div>
+
         </div>
     <script src="static/JS/mesFonction.js"></script>
     </body>
-
+    
 </html>

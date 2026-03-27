@@ -3,8 +3,8 @@ from flask import Flask, render_template, Response
 
 app = Flask(__name__)
 
-# Votre configuration actuelle
-RTSP_URL = "rtsp://etudiant4:btscielir@172.20.21.45:554/live/ch0"
+
+RTSP_URL = "rtsp://etudiant4:btscielir@172.20.21.24:554/live/ch0"
 
 def generate_frames():
     camera = cv2.VideoCapture(RTSP_URL)
