@@ -1,0 +1,896 @@
+/* =================== principale  ==================== */
+header {
+    background-color: var(--bg-header);
+    color: var(--text-color);
+    margin-left: 200px;
+    padding: 15px 30px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+    box-sizing: border-box;
+    justify-content: space-between; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'proxima-nova', sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-color);
+    transition: background-color 0.3s ease;
+}
+
+.main-content{
+    margin-left: 210px;
+    padding: 20px;
+    font-family: 'proxima-nova', sans-serif;
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+}
+
+#alert-success {
+    position: fixed;       /* Fixe l'alerte par rapport à la fenêtre */
+    top: 90px;             /* La descend juste en dessous du header */
+    right: 20px;           /* La colle à droite avec une petite marge */
+    width: 300px;          /* Largeur fixe pour un rendu propre */
+    z-index: 9999;         /* S'assure qu'elle passe au-dessus de tout */
+    
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    
+    /* Animation pour une apparition fluide depuis la droite */
+    animation: slideInRight 0.5s ease-out;
+    transition: opacity 0.5s ease;
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* =================== theme dark/ligh  ==================== */
+:root{
+    --bg-page: #1a1c23;
+    --bg-sidebar: #587b7f;
+    --text-color: #e5e7eb;
+    --bg-header: #252930;
+    --accent-color: #364958;
+}
+
+[data-theme="light"] {
+    --bg-page: #EFEFEF;
+    --bg-sidebar: #587b7f;
+    --text-color: #1e293b;
+    --bg-header: #ffffff;
+    --accent-color: #cbd5e1;
+}
+
+[data-theme="dark"] .sidebar img {
+    filter: invert(1) grayscale(1);
+}
+
+
+
+
+/* =================== sidebar  ==================== */
+#user_icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid var(--accent-color);
+}
+
+#user_icon:hover {
+    transform: scale(1.1);
+}
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: var(--bg-sidebar);
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    /* left: 1px; */
+    font-family: 'proxima-nova', sans-serif;
+    height: 100vh;
+    top: 0;
+}
+
+.sidebar a {
+  display: block;
+  color: var(--text-color);
+  /* color: #1e293b; */
+  padding: 16px;
+  text-decoration: none;
+  
+}
+
+.sidebar a.active {
+  background-color: #364958;
+  color: black;
+}
+
+.sidebar a img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    filter: none !important;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: grey;
+  color: white;
+}
+
+.sidebar-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.sidebar-logo img {
+    width: 140px;
+    height: auto;
+    display: block;
+    margin: 15px auto;
+    
+    /* contour logo */
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+#logout_link {
+    color: red;
+    margin-top: auto;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    text-align: center;
+}
+/* =================== aide  ==================== */
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.help-link-container {
+    margin-top: auto; /* Pousse le lien vers le bas */
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.help-link-container a {
+    color: #3498db !important; /* Couleur bleue pour le support */
+}
+/* =================== button switch theme =================== */
+.switch_theme {
+    margin-top: auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#switch_theme_button {
+    background: none;
+    border: 2px solid var(--text-color);
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 10px;
+    transition: transform 0.2s ease, border-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#switch_theme_button img {
+    width: 24px;
+    height: 24px;
+}
+
+#switch_theme_button:hover {
+    transform: scale(1.1);
+}
+
+
+
+
+/* =================== windows video =================== */
+#video_feed {
+    border-radius: 10px;
+    max-width: 100%;
+    height: auto;
+    border: 3px solid #24272d;
+}
+
+#camera_container {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-top-right-radius: 8px; /* Arrondi seulement en haut à droite */
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    position: relative;
+    height: 350px;
+}
+
+.video_section{
+    width: 700px; /* Conserve ta largeur initiale */
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =================== controllers onglet cam =================== */
+.controllers_container {
+    width: 650px;          
+    background-color: var(--bg-sidebar);
+    border-radius: 28px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    
+}
+
+.cam-controlers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Espace entre les boutons */
+}
+
+.horizontal-btns {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.controllers {
+    width: 60px; /* Taille du cercle */
+    height: 60px;
+    border-radius: 50%; /* Cercle parfait */
+    background-color: var(--accent-color); /* Fond gris-bleu */
+    border: 3px solid var(--accent-color); /* Bordure épaisse de la même couleur */
+    color: var(--text-color); /* Flèche blanche */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.controllers .arrow {
+    font-size: 1.8rem; /* Taille de la flèche */
+    line-height: 1;
+    -webkit-text-stroke: 1px var(--accent-color); /* Épaisseur du trait de la flèche */
+}
+
+.controllers-center {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.3); /* Petit point central discret */
+    border-radius: 50%;
+}
+
+.controllers:hover {
+    background-color: transparent; /* Devient outline au survol */
+    color: var(--accent-color); /* La flèche prend la couleur de l'accent */
+    transform: scale(1.05);
+}
+
+.controllers:active {
+    transform: scale(0.95);
+    background-color: rgba(0,0,0,0.1); /* Petit fond sombre au clic */
+}
+
+.camera-selection{
+    display: flex;
+    gap: 0;
+    background: transparent;
+}
+.tab-btn {
+    padding: 10px 20px;
+    background-color: #2a2a2a; /* Couleur de fond */
+    border: 1px solid #333;
+    color: white;
+    cursor: pointer;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin-right: 5px;
+    transition: background 0.3s;
+}
+
+.tab-btn.active {
+    background-color: #1e1e1e; /* Couleur identique au camera_container */
+    border-bottom: 1px solid #1e1e1e; /* Masque la bordure du dessous */
+    z-index: 2; /* Fait passer le bouton au premier plan */
+}
+/* =================== error =================== */
+.loader {
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-top: 4px solid #3498db; /* Ta couleur bleue */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+#cam_error_icon {
+display: none;
+    width: 80px;
+    opacity: 0.7;
+    
+    /* Les 3 lignes magiques pour le centrer parfaitement */
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/* =================== btn screnn,etc =================== */
+.icon-btn {
+    display: flex;
+    flex-direction: row; /* Aligne les deux boutons sur la même ligne */
+    justify-content: center;
+    gap: 20px; /* Espace entre les deux boutons */
+    padding: 20px;
+}
+
+/* Style du bouton rond */
+.icon-btn-round {
+    display: flex;
+    flex-direction: row; /* Icône et texte côte à côte à l'intérieur */
+    align-items: center;
+    justify-content: center;
+    padding: 10px 25px;
+    background-color: var(--bg-sidebar);
+    border: 2px solid var(--accent-color);
+    border-radius: 50px; /* Crée l'effet pilule/arrondi */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 140px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.icon-btn-round img {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px; /* Espace entre l'icône et le texte */
+}
+
+.icon-btn-round span {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+/* Effets au survol */
+.icon-btn-round:hover {
+   background-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px var(--accent-color);
+}
+
+.icon-btn-round:hover span {
+    color: white;
+}
+
+.icon-btn--round:hover img {
+    filter: brightness(0) invert(1); /* Optionnel : passe l'icône en blanc au survol si elle est sombre */
+}
+    
+
+
+/* =================== windows Home =================== */
+
+/* =================== widget_home_video =================== */
+.widget_home_video {
+    cursor: pointer;
+    border-radius: 28px;
+    height: 200px;
+    width: 350px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: 3px solid #364958;
+    position: relative;
+    z-index: 10;
+}
+
+.widget_home_video::after {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 2px 8px;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: bold;
+    z-index: 20;
+    display: none;
+}
+
+#widget_home_video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 5; /* L'image s'affiche au-dessus de l'icône */
+}
+
+.widget_home_video:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    border-color: #51718a;
+}
+
+.widget_home_video::before {
+    font-size: 50px;
+    opacity: 0.5;
+    position: absolute;
+    z-index: 1;
+}
+
+#widget_error_icon{
+    display: none;
+    width: 50px;
+    opacity: 0.5;
+}
+/* =================== widget_lecteur_RFID =================== */
+.widget_lecteur_RFID {
+    background-color: var(--bg-sidebar); 
+    border-radius: 28px;
+    height: 200px;
+    width: 350px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: 3px solid var(--accent-color);
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.agent-logo-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.agent-logo-section img {
+    width: 80px;
+    height: auto;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
+}
+
+.agent-info {
+    flex: 2;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.info-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.label-info {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    margin: 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.value-info {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin: 2px 0 0 0;
+    font-weight: 500;
+}
+
+.widget_lecteur_RFID:hover {
+    transform: scale(1.02);
+}
+
+.widget_home_video, .widget_lecteur_RFID, .widget_capteur{
+    flex-shrink: 0; 
+}
+
+.widgets-container {
+    display: flex;
+    gap: 20px; 
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.widget-title {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    margin: 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--text-color);
+    font-weight: bold;
+    letter-spacing: 1px;
+    opacity: 0.7;
+}
+/* =================== widget capteur =================== */
+.widget_capteur{
+    background-color: var(--bg-sidebar); 
+    border-radius: 28px;
+    height: 200px;
+    width: 350px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: 3px solid var(--accent-color);
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+
+
+
+/* =================== windows administration =================== */
+#windows_administration {
+    display: none; /* Sera géré par le JS */
+    padding: 40px;
+}
+/* =================== login =================== */
+.container-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+}
+
+.form-box {
+    width: 420px;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-box.active {
+    display: block;
+}
+
+.form-box h2 {
+    font-size: 34px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-box input {
+    width: 93%;
+    padding: 12px;
+    background: #eee;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background: var(--bg-sidebar);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    transition: 0.5s;
+}
+
+.btn-login:hover {
+    background: #6884d3;
+}
+/* =================== tableau =================== */
+#admin_table_container {
+    width: 100%;
+    display: none;
+    margin-bottom: 20px;
+    pointer-events: none; 
+    user-select: none;    
+}
+
+#admin_table_container div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: auto; /* Réactive le clic pour le titre et le bouton */
+}
+
+#admin_table_container h2 {
+    color: var(--text-color); /* Titre qui s'adapte au thème */
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--bg-header); /* S'adapte au thème clair/sombre */
+    border-radius: 8px;
+    overflow: hidden;
+    pointer-events: auto; /* Réactive le clic pour les boutons de suppression */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Petite ombre esthétique */
+}
+
+.admin-table th, .admin-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--accent-color); /* Ligne de séparation adaptative */
+    color: var(--text-color); /* Texte qui s'adapte (blanc ou noir) */
+}
+
+.admin-table th {
+    background-color: var(--bg-sidebar); /* Utilise la même couleur que ta barre latérale */
+    color: #ffffff; /* Toujours blanc car ta sidebar reste foncée dans les deux thèmes */
+    font-weight: bold;
+}
+
+.admin-table tr:hover {
+    background-color: var(--accent-color);
+    transition: background-color 0.2s ease;
+}
+
+#button_deconnexion {
+    pointer-events: auto;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: opacity 0.3s;
+}
+
+#message_error{
+    color:red;
+    display:none;
+    text-align:center;
+}
+
+.error-message{
+    padding: 12px;
+    background: #f8d7da;
+    border-radius: 6px;
+    font-size: 16px;
+    color: red;
+    text-align: center;
+    margin-bottom: 20px;
+} */
+
+.btn-delete {
+    background-color: red !important;
+    border: 5px solid yellow !important;
+    cursor: pointer !important;
+    pointer-events: all !important;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b;
+}
+
+.password-masked {
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+
+
+
+/* =================== windows historique =================== */
+/* Alternance de couleur pour les lignes (Zébrure discrète) */
+.tableau_historique tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+/* --- LE BOUTON DÉCONNEXION --- */
+
+#windows_history {
+    padding: 20px;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column; /* Aligne le bouton au dessus du tableau */
+    align-items: center;    /* Centre horizontalement */
+    gap: 20px;
+}
+
+/* Style de la table d'historique */
+.tableau_historique {
+    width: 100%;
+    max-width: 800px; /* Ou la largeur de ton choix */
+    margin: 0 auto;   /* Centre le tableau dans la page */
+    border-collapse: collapse;
+    /* background: rgba(255, 255, 255, 0.05); */
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--bg-header); /* S'adapte au thème clair/sombre */
+}
+
+/* Style des en-têtes (Headers) */
+.tableau_historique th {
+    background-color: var(--bg-sidebar);
+    padding: 15px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    color: var(--text-color);
+}
+
+/* Style des cellules (Données) */
+.tableau_historique td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    color: var(--text-color);
+    text-align: center;
+}
+
+/* Effet au survol des lignes */
+.tableau_historique tr:hover {
+    background-color: var(--accent-color);
+    transition: background-color 0.2s ease;
+}
+
+/* Style de la dernière ligne pour éviter la bordure */
+.tableau_historique tr:last-child td {
+    border-bottom: none;
+}
+
+/* Alignement des textes (classe utilisée dans ton JS) */
+.centrer {
+    text-align: center;
+}
+
+.btn-import{
+    
+    padding: 10px 20px; 
+    background-color: var(--bg-sidebar);
+    font-size: 1em; 
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--bg-sidebar);
+    border: 2px solid var(--accent-color);
+    transition: all 0.3s ease;
+    color: var(--text-color);
+}
+
+
+.btn-import img {
+    height: 20px;
+    object-fit: contain;
+    filter: invert(1);
+}
+
+
+
+/* =================== windows capteur =================== */
+.widget_capteur {
+    background-color: var(--bg-sidebar); 
+    border-radius: 28px;
+    height: 200px; /* Hauteur fixe par défaut comme les autres widgets */
+    width: 350px;
+    display: flex;
+    flex-direction: column; /* Organisation verticale */
+    padding: 40px 20px 15px 20px; /* Padding haut plus grand pour le titre */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: 3px solid var(--accent-color);
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    position: relative;
+    
+    /* Si tu veux qu'il grandisse en hauteur dans windows_home, 
+       tu pourras ajouter 'flex-grow: 1;' plus tard */
+}
+
+/* Conteneur interne pour gérer l'espacement et les barres */
+.sensor-list-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around; /* Espace équitablement les lignes */
+}
+
+/* Style de chaque ligne de capteur */
+.sensor-row {
+    display: flex;
+    justify-content: space-between; /* Nom à gauche, valeur à droite */
+    align-items: center;
+    width: 100%;
+    padding: 8px 0;
+    position: relative; /* Pour positionner la barre */
+}
+
+/* La fameuse barre de séparation (sauf après la dernière ligne) */
+.sensor-row:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; /* Positionnée juste en dessous */
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.08); /* Barre claire discrète */
+}
+
+/* Groupement icône + texte à gauche */
+.sensor-label {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Espace entre l'icône et le texte */
+}
+
+.sensor-label img {
+    width: 20px; /* Taille de tes icônes images */
+    height: 20px;
+    opacity: 0.8;
+}
+
+.sensor-label span {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+/* La valeur à droite (reprend le style global .widget-value) */
+.widget_capteur .widget-value {
+    font-size: 1.1rem; /* Légèrement plus petit pour la liste */
+    font-weight: bold;
+    margin: 0;
+    color: var(--text-color);
+}

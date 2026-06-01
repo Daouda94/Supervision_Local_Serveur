@@ -1,0 +1,312 @@
+/* ===================  *login * =================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #101010;
+    margin: 0;
+}
+
+/* Le conteneur ne doit plus être en absolute pour que le flex du body fonctionne */
+.container {
+    width: 100%;
+    max-width: 400px;
+    z-index: 2; /* Pour rester devant le fond ou les particules */
+}
+
+p a{
+    color: #7494ec;
+    text-decoration: none;
+}
+
+p a:hover{
+    text-decoration: underline;
+}
+
+.form-box {
+    width: 100%;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+#show-password-register{
+    display: flex;
+    text-align: center;
+}
+
+.form-box.active{
+    display: block;
+}
+
+h2{
+    font-size: 34px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input{
+    width: 100%;
+    padding: 12px;
+    background: #eee;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+button{
+    width: 100%;
+    padding: 12px;
+    background: #7494ec;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    transition: 0.5s;
+    margin-top: 10px;
+}
+
+button:hover{
+    background: #6884d3;
+}
+
+p{
+    font-size: 14.5px;
+    text-align: center;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.form-options label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+}
+
+.form-options input[type="checkbox"] {
+    margin: 0; 
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+
+.container .form{
+    position: relative;
+    z-index: 1;
+}
+
+/* Conteneur principal qui centre tout */
+.container-form {
+    position: relative;
+    z-index: 10; /* Pour passer devant les particules */
+    background: rgba(255, 255, 255, 0.08); /* Effet de verre sombre */
+    backdrop-filter: blur(10px); /* Flou d'arrière-plan moderne */
+    padding: 40px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-form img {
+    max-width: 180px; /* Aligne la largeur sur celle du toggle */
+    height: auto; /* Conserve les proportions */
+    margin-bottom: 25px; /* Espace avec le sélecteur Sign in/up */
+    display: block; /* Centre l'image si nécessaire */
+}
+
+.form-toggle {
+    display: flex;
+    background: rgba(0, 0, 0, 0.4); /* Fond plus sombre pour mieux voir le contraste */
+    border-radius: 50px;
+    padding: 5px; /* L'espace entre le bord noir et le bouton blanc */
+    margin: 0 auto 30px auto;
+    width: 300px; /* Largeur fixe pour la stabilité */
+    height: 50px; /* Hauteur fixe pour maîtriser le centrage */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    align-items: center; /* Centre les boutons verticalement dans le rail */
+}
+
+.toggle-btn {
+    flex: 1;
+    height: 100%; /* Le bouton prend toute la hauteur disponible du rail (moins le padding) */
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    
+    /* Ces 3 lignes assurent le centrage parfait du texte */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Bouton actif (La pilule blanche) */
+.toggle-btn.active {
+    background: #ffffff;
+    color: #1a1a1a;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Effet au survol des boutons inactifs */
+.toggle-btn:hover:not(.active) {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Style des titres et textes */
+h2 {
+    color: white;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: left; /* Aligné à gauche comme sur l'image */
+    width: 100%;
+}
+
+/* Style des inputs (Champs de saisie sombres) */
+input {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    color: white !important;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Bouton d'action principal (Blanc) */
+.btn-login, .btn-register {
+    background: white;
+    color: black;
+    font-weight: bold;
+    border-radius: 12px;
+    margin-top: 20px;
+    text-transform: none; /* Pas de majuscules forcées */
+    letter-spacing: 0.5px;
+}
+
+.btn-login:hover, .btn-register:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+/* On cache la box blanche par défaut de ton ancien CSS */
+.form-box {
+    background: transparent;
+    box-shadow: none;
+    width: 100%;
+    padding: 0;
+}
+
+/* =================== *particles.js* =================== */
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#particles-js{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #101010;
+    z-index: 1;
+}
+
+/* .container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    user-select: none;
+    transform: translate(-50%,-50%);
+    width: max-content;
+
+    text-align: center;
+} */
+
+.background{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* #alert-success {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    padding: 15px 25px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    opacity: 1;
+} */
+
+.form-box {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Optionnel : cacher par défaut en CSS pour éviter le flash au chargement */
+#register-form {
+    display: none;
+}
+
+.floating-alert {
+    position: fixed;
+    top: 25px;           /* Distance du haut */
+    left: 50%;           /* Place le bord gauche au milieu */
+    transform: translateX(-50%); /* Décale de moitié vers la gauche pour centrer parfaitement */
+    z-index: 9999;
+    min-width: 350px;
+    padding: 16px 30px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transition: all 0.5s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.alert-red {
+    background-color: #e74c3c !important; /* Rouge vif */
+    border-bottom: 4px solid #c0392b;
+}
+
+.alert-blue {
+    background-color: #3498db !important; /* Bleu vif */
+    border-bottom: 4px solid #2980b9;
+}
